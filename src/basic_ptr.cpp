@@ -17,4 +17,14 @@ int main(int argc,char* argv[])
   cout << *ptt << endl; // x mem
   cout << **ptt << endl; // x val
   return 0;
+  
+  /* OUTPUT---
+  0xbff53b38
+  1
+  0xbff53b38
+  1
+  0xbff53b44
+  0xbff53b38
+  1
+  */
 }

@@ -2,6 +2,7 @@
 using namespace std;
 int main(int argc,char* argv[])
 {
+  //“宣告指標”與“運算式指標”是不一樣ㄉㄚ
   int* p; // 儲存一個指向整數的指標
   int* pt;
   int** ptt; // point to ptr-stored // 儲存一個指向整數的指標的指標

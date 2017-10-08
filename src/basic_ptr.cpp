@@ -2,9 +2,9 @@
 using namespace std;
 int main(int argc,char* argv[])
 {
-  int* p;
+  int* p; // 儲存一個指向整數的指標
   int* pt;
-  int** ptt; // point to ptr-stored
+  int** ptt; // point to ptr-stored // 儲存一個指向整數的指標的指標
   int x = 1;
   p = &x;
   pt = p;

@@ -18,5 +18,6 @@ int main(void)
     /* Testing the speed with parameter above */
     for(int i=0;i<10000;i++)
         cout<<i<<" ";
+        cout << MAX << endl; //<-OUTPUT: 87 (Pre-Processing) 
     return 0;
 }

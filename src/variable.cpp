@@ -21,3 +21,16 @@ int main(void)
         cout << MAX << endl; //<-OUTPUT: 87 (Pre-Processing) 
     return 0;
 }
+
+//巨集 Macro
+#include <iostream>
+#define SWAP(x,y,z) (z=x, x=y, y=z) // 定義巨集
+using namespace std;
+/* Main Functions */
+int main(int argc, const char * argv[]) {
+    int x=3, y=4, temp;
+    SWAP(x, y, temp); // 呼叫巨集
+    cout << "x = " << x << " y = " << y << endl;
+    //System block
+    return 0;
+}

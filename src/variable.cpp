@@ -1,4 +1,8 @@
 #include <iostream>
+/* 前置定義 (Pre-Processing) */
+#define CPU "Central Processing Unit"  //定義字串
+#define PI 3.14159  //定義常數
+#define MAX 87
 using namespace std;
 int main(void)
 {

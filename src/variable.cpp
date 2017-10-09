@@ -22,6 +22,10 @@ int main(void)
     return 0;
 }
 
+/*
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+*/
+
 //巨集 Macro
 #include <iostream>
 #define SWAP(x,y,z) (z=x, x=y, y=z) // 定義巨集

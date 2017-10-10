@@ -27,3 +27,20 @@ int cmpString(char* str1, char* str2)
     }
     return 0;
 }
+
+/******************************************
+Introduce the how pointer work with array
+******************************************/
+#include <iostream>
+#include <stdio.h>
+using namespace std;
+/* Main Functions */
+int main(int argc, const char * argv[]) {
+    char str1[10];
+    char* ptr;
+    scanf("%s",str1);
+    /* INPUT: Chishen */
+    ptr = str1;//get str1 address and let ptr point to (start adr)
+    cout << ptr[2];
+    /* OUTPUT: i */
+}

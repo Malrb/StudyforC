@@ -39,3 +39,9 @@ int main(void){
     add_node(head, 111);
     print_list(head);
 }
+
+/**** OUTPUT:
+123
+456
+111
+****/

@@ -8,7 +8,7 @@ int main(int argc, const char * argv[]) {
     int answer;
     int guess;
     int left=1,right=10000;
-    srand(time(NULL));
+    srand(time(NULL)); // Random seed -> System time (毫秒) 不重複
     answer = rand() % 10000;//range is 0-10000
     printf("%d is the answer",answer);
     while (1) {

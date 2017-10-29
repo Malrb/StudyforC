@@ -73,8 +73,8 @@ void LinkedList::deleteNode(int x){
         cout << "There is no " << x << " in list.\n";
     }else if(current == first){
         first = first->next; // current->next
-        delete current;
-        current = 0;  // 當指標被delete後, 將其指向NULL, 可以避免不必要bug
+        delete current; /* Free mem to Double-LinkedList(heap) */
+        current = 0; /* Pointer still point to unuse struct */  // 當指標被delete後, 將其指向NULL, 可以避免不必要bug
     }else{
         previous->next = current->next;
         delete current;

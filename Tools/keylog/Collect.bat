@@ -1,0 +1,1 @@
+copy %appdata%\Col.log

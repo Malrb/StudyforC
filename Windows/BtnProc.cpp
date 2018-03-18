@@ -1,12 +1,14 @@
 #include <windows.h>
 
 #define BUTTON_ID      1001
-static HWND hButton;
+static HWND hButton1;
+static HWND hButton2;
 class CMsgTestDlg{
 	private:
 		HWND hwnd;
 	public:
 		void OnClose();
+		void OnExec();
 };
 
 //HINSTANCE hInst;
@@ -17,14 +19,18 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 	
 	switch(Message) {
 		case WM_CREATE:
-    		hButton = CreateWindow(TEXT("Button"), TEXT("點我"),    
+    		hButton1 = CreateWindow(TEXT("Button"), TEXT("關閉記事本"),    
 		             WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
-		             80, 10, 100, 50,        
+		             120, 30, 100, 50,        
+		             hwnd, (HMENU) BUTTON_ID, NULL, NULL);
+		    hButton2 =  CreateWindow(TEXT("Button"), TEXT("開啟記事本"),    
+		             WS_VISIBLE | WS_CHILD | BS_PUSHBUTTON,
+		             120, 90, 100, 50,        
 		             hwnd, (HMENU) BUTTON_ID, NULL, NULL);
       		break;
 		case WM_PAINT:
 			hdc = BeginPaint(hwnd, &ps);
-			TextOut(hdc, 5, 5, "H!", 2);
+			TextOut(hdc, 5, 7, "輕鬆優化 盡在疼訊", 17);
 			EndPaint(hwnd, &ps);
 			break;
 		/* Upon destruction, tell the main thread to stop */
@@ -42,19 +48,24 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 
 void CMsgTestDlg::OnClose()
 {
-	HWND hWnd = ::FindWindow(0,"Notepad");
+	HWND hWnd = ::FindWindow("Notepad",NULL);
 	if(hWnd == NULL)
 	{
 		MessageBox( 
    			NULL, // or specify owner window 
-   			"Some text...",  
-   			"Message-box Caption here", 
+   			"已全部優化",  
+   			"無效", 
    			MB_OK // or other flags here... 
 		); 
 		return;
 	}
 	::SendMessage(hWnd,WM_CLOSE,NULL,NULL);
 } 
+
+void CMsgTestDlg::OnExec()
+{
+	WinExec("notepad.exe",SW_SHOW);
+}
 
 /* The 'main' function of Win32 GUI programs: this is where execution starts */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -80,11 +91,11 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		return 0;
 	}
 
-	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,"WindowClass","Caption",WS_VISIBLE|WS_OVERLAPPEDWINDOW,
+	hwnd = CreateWindowEx(WS_EX_CLIENTEDGE,"WindowClass","疼訊優化軟件",WS_VISIBLE|WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, /* x */
 		CW_USEDEFAULT, /* y */
-		300, /* width */
-		150, /* height */
+		420, /* width */
+		200, /* height */
 		NULL,NULL,hInstance,NULL);
 
 	if(hwnd == NULL) {
@@ -98,7 +109,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 		this loop will not produce unreasonably high CPU usage
 	*/
 	while(GetMessage(&msg, NULL, 0, 0) > 0) { /* If no error is received... */
-		if(msg.hwnd == hButton)
+		if(msg.hwnd == hButton1)
 		{
 			switch(msg.message)
 			{
@@ -107,6 +118,23 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 					//MessageBox(NULL, "Hello!","Demo!",MB_ICONEXCLAMATION|MB_OK);
 					CMsgTestDlg cms;
 					cms.OnClose();
+					continue;
+				case WM_LBUTTONUP:
+					//
+					//MessageBox(NULL, "Hello!","Demo!",MB_ICONEXCLAMATION|MB_OK);
+					continue;
+			}
+			
+		}else if(msg.hwnd == hButton2){
+			switch(msg.message)
+			{
+				case WM_LBUTTONDOWN:
+					//
+					//MessageBox(NULL, "Hello!","Demo!",MB_ICONEXCLAMATION|MB_OK);
+					CMsgTestDlg cms;
+					while(true){
+					cms.OnExec();
+					}
 					continue;
 				case WM_LBUTTONUP:
 					//

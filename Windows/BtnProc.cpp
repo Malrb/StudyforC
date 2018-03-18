@@ -2,6 +2,13 @@
 
 #define BUTTON_ID      1001
 static HWND hButton;
+class CMsgTestDlg{
+	private:
+		HWND hwnd;
+	public:
+		void OnClose();
+};
+
 //HINSTANCE hInst;
 /* This is where all the input to the window goes to */
 LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) {
@@ -32,6 +39,22 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 	}
 	return 0;
 }
+
+void CMsgTestDlg::OnClose()
+{
+	HWND hWnd = ::FindWindow(0,"Notepad");
+	if(hWnd == NULL)
+	{
+		MessageBox( 
+   			NULL, // or specify owner window 
+   			"Some text...",  
+   			"Message-box Caption here", 
+   			MB_OK // or other flags here... 
+		); 
+		return;
+	}
+	::SendMessage(hWnd,WM_CLOSE,NULL,NULL);
+} 
 
 /* The 'main' function of Win32 GUI programs: this is where execution starts */
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
@@ -81,7 +104,9 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 			{
 				case WM_LBUTTONDOWN:
 					//
-					MessageBox(NULL, "Hello!","Demo!",MB_ICONEXCLAMATION|MB_OK);
+					//MessageBox(NULL, "Hello!","Demo!",MB_ICONEXCLAMATION|MB_OK);
+					CMsgTestDlg cms;
+					cms.OnClose();
 					continue;
 				case WM_LBUTTONUP:
 					//

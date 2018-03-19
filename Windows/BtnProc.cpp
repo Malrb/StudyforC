@@ -1,4 +1,10 @@
+
 #include <windows.h>
+
+/* TROUBLE SHOOTING AREA
+Spy++ : Microsoft software to detect window information
+
+ */
 
 #define BUTTON_ID      1001
 static HWND hButton1;
@@ -60,7 +66,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT Message, WPARAM wParam, LPARAM lParam) 
 
 void CMsgTestDlg::OnClose()
 {
-	HWND hWnd = ::FindWindow("Notepad",NULL);
+	HWND hWnd = ::FindWindow("TMainForm",NULL);
 	if(hWnd == NULL)
 	{
 		MessageBox( 
@@ -71,12 +77,19 @@ void CMsgTestDlg::OnClose()
 		); 
 		return;
 	}
-	::SendMessage(hWnd,WM_CLOSE,NULL,NULL);
+	char text[MAXBYTE] = {0};
+	::SendMessage(hWnd,WM_GETTEXT,(WPARAM)MAXBYTE,(LPARAM)text);
+		MessageBox( 
+   			NULL, // or specify owner window 
+   			text,  
+   			"標題擷取", 
+   			MB_OK // or other flags here... 
+		); 
 } 
 
 void CMsgTestDlg::OnExec()
 {
-	WinExec("notepad.exe",SW_SHOW);
+	WinExec("calc.exe",SW_SHOW);
 }
 
 void CMsgTestDlg::OnEditWnd()

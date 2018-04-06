@@ -1,2 +1,3 @@
 # StudyforC
-Something need to read / stored src
+Something about ~~windows and C implementations~~
+about toys...

